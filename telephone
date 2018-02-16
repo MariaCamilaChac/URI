@@ -1,0 +1,71 @@
+package printer;
+
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.util.Arrays;
+
+public class Test {
+	BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+	BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
+	
+	public static void OrdenarDatos(int x, int []array){
+		int aux;
+		for (int i = 0; i < x; i++) {
+			for (int j = i+1; j < x; j++) {
+				
+				if (array[i]>array[j]) {
+					aux= array[i];
+					array[i]=array[j];
+					array[j]=aux;
+				}
+			}
+		}
+	}
+	
+	
+	public static void Verificación(int []array){
+		int contador=0;
+		for (int i = 0; i < array.length; i++) {
+			for (int j = 1; j < array.length; j++) {
+				if(array[i]==array[j]){
+					contador=contador+1;
+				}
+				
+			}
+		}
+		System.out.println(contador);
+	}
+	
+
+		 			
+		
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader (new InputStreamReader (System.in));
+		BufferedWriter bw = new BufferedWriter (new OutputStreamWriter (System.out));
+		
+		Test c = new Test();
+		
+		bw.write("Escriba cuantos numeros de telefono va a ingresar \n");
+		bw.flush();
+		int x= Integer.parseInt(br.readLine());
+		
+		int []num= new int [10];
+		
+		for (int j = 0; j < x; j++) {
+			bw.write("escriba el numero de telefono  \n");
+			bw.flush();	
+			num[j] = Integer.parseInt(br.readLine());
+		}
+		c.OrdenarDatos(x, num);
+		for (int i = 0; i < x; i++) 
+			System.out.println(num[i]);	
+		
+		c.Verificación(num);
+		
+		
+	}
+	
+}
